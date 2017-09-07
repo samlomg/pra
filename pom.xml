@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.dglbc</groupId>
+    <artifactId>note</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <packaging>war</packaging>
+    <properties>
+        <httpclient.version>4.5.2</httpclient.version>
+        <spring.version>4.3.5.RELEASE</spring.version>
+        <spring.security.version>4.2.1.RELEASE</spring.security.version>
+        <spring.data.jpa.version>1.11.0.RELEASE</spring.data.jpa.version>
+        <hibernate.entitymanager.version>5.2.6.Final</hibernate.entitymanager.version>
+        <hibernate.validator.version>5.3.4.Final</hibernate.validator.version>
+        <mysql.version>5.1.37</mysql.version>
+        <commons-dbcp.version>1.4</commons-dbcp.version>
+        <slf4j.version>1.7.21</slf4j.version>
+        <logback.version>1.1.7</logback.version>
+        <servletapi.version>3.1.0</servletapi.version>
+        <lombok.version>1.16.10</lombok.version>
+        <javax.mail.version>1.4.3</javax.mail.version>
+        <websocket.version>1.1</websocket.version>
+        <jackson.version>2.8.5</jackson.version>
+        <fastjson.version>1.2.32</fastjson.version>
+        <httpclient.version>4.5.3</httpclient.version>
+    </properties>
+
+    <dependencies>
+        <!-- hibernate jpa 实现 -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-entitymanager</artifactId>
+            <version>${hibernate.entitymanager.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- 数据验证 -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- mysql 数据库驱动 -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>${mysql.version}</version>
+        </dependency>
+
+        <!-- Misc -->
+        <!--<dependency>
+            <groupId>commons-dbcp</groupId>
+            <artifactId>commons-dbcp</artifactId>
+            <version>${commons-dbcp.version}</version>
+        </dependency>-->
+        <dependency>
+            <groupId>c3p0</groupId>
+            <artifactId>c3p0</artifactId>
+            <version>0.9.1.2</version>
+        </dependency>
+
+        <!-- spring begin -->
+        <!-- Spring MVC -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <version>${spring.version}</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
+            <scope>compile</scope>
+        </dependency>
+        <!-- srping mail integration  -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context-support</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-websocket</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-messaging</artifactId>
+            <version>${spring.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!-- spring data jpa -->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-jpa</artifactId>
+            <version>${spring.data.jpa.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- spring json化 Begin-->
+        <dependency>
+            <groupId>com.fasterxml.jackson.datatype</groupId>
+            <artifactId>jackson-datatype-jsr310</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-xml</artifactId>
+            <version>${jackson.version}</version>
+        </dependency>
+        <!-- spring json化 End-->
+
+        <!-- spring websocket 消息转化 -->
+        <!--        <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-core</artifactId>
+                    <version>${jackson.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-databind</artifactId>
+                    <version>${jackson.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.core</groupId>
+                    <artifactId>jackson-annotations</artifactId>
+                    <version>${jackson.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>com.fasterxml.jackson.module</groupId>
+                    <artifactId>jackson-module-jaxb-annotations</artifactId>
+                    <version>${jackson.version}</version>
+                </dependency>-->
+
+
+        <!-- jpa 匹配查询简化-->
+        <dependency>
+            <groupId>com.github.wenhao</groupId>
+            <artifactId>jpa-spec</artifactId>
+            <version>3.0.0</version>
+        </dependency>
+
+        <!-- spring security -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-web</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+
+        <!-- https://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-taglibs</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-data</artifactId>
+            <version>${spring.security.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-config</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-messaging</artifactId>
+            <version>${spring.security.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--spring end-->
+
+        <!-- Spring mvc upload -->
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.3.2</version>
+        </dependency>
+        <!-- Spring mvc upload End -->
+
+        <!-- mail -->
+        <dependency>
+            <groupId>javax.mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>${javax.mail.version}</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <!-- httpclient -->
+        <!--        <dependency>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient</artifactId>
+                    <version>${httpclient.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>httpclient-cache</artifactId>
+                    <version>${httpclient.version}</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.apache.httpcomponents</groupId>
+                    <artifactId>fluent-hc</artifactId>
+                    <version>${httpclient.version}</version>
+                </dependency>-->
+        <!--        <dependency>
+                    <groupId>com.alibaba</groupId>
+                    <artifactId>fastjson</artifactId>
+                    <version>${fastjson.version}</version>
+                </dependency>-->
+        <!-- 简化工具 begin -->
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- 简化工具 end -->
+
+        <!-- easypoi -->
+        <!--        <dependency>
+                    <groupId>org.jeecg</groupId>
+                    <artifactId>easypoi-base</artifactId>
+                    <version>2.3.0.2</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jeecg</groupId>
+                    <artifactId>easypoi-web</artifactId>
+                    <version>2.3.0.2</version>
+                </dependency>
+                <dependency>
+                    <groupId>org.jeecg</groupId>
+                    <artifactId>easypoi-annotation</artifactId>
+                    <version>2.3.0.2</version>
+                </dependency>-->
+        <!-- easypoi End -->
+
+        <!-- https://mvnrepository.com/artifact/org.apache.commons/commons-compress -->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-compress</artifactId>
+            <version>1.13</version>
+        </dependency>
+
+        <!--     JSP begin   -->
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>javax.servlet-api</artifactId>
+            <version>${servletapi.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>jstl</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
+        </dependency>
+        <!--jsp继承模板集成 -->
+        <!--        <dependency>
+                    <groupId>net.dreamlu</groupId>
+                    <artifactId>jsp-layout</artifactId>
+                    <version>0.0.2</version>
+                </dependency>-->
+        <!--jsp继承模板集成 END -->
+        <!--     JSP end   -->
+
+        <!-- httpclient -->
+        <!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/fluent-hc -->
+        <dependency>
+            <groupId>org.apache.httpcomponents</groupId>
+            <artifactId>fluent-hc</artifactId>
+            <version>${httpclient.version}</version>
+        </dependency>
+
+
+        <!-- log begin -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>jcl-over-slf4j</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>ch.qos.logback</groupId>
+            <artifactId>logback-classic</artifactId>
+            <version>${logback.version}</version>
+        </dependency>
+
+        <!-- log end -->
+
+        <!-- test begin -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.12</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>${spring.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <!-- test end -->
+
+    </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>utf8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.2.2.v20140723</version>
+                <configuration>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                    <webApp>
+                        <contextPath>/${project.artifactId}</contextPath>
+                    </webApp>
+                    <httpConnector>
+                        <port>80</port>
+                        <idleTimeout>60000</idleTimeout>
+                    </httpConnector>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.zeroturnaround</groupId>
+                <artifactId>jrebel-maven-plugin</artifactId>
+                <version>1.1.5</version>
+                <executions>
+                    <execution>
+                        <id>generate-rebel-xml</id>
+                        <phase>process-resources</phase>
+                        <goals>
+                            <goal>generate</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
